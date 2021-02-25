@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ThirdPartyApi.Services;
 
 namespace ThirdPartyApi
 {
@@ -24,6 +25,9 @@ namespace ThirdPartyApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Registering the service
+            services.AddSingleton<IApiService, ApiService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

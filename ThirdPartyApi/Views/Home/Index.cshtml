@@ -1,8 +1,30 @@
-﻿@{
+﻿@model List<PredictionModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h3 class="display-4">Prediction of covid cases in Sweden</h3>
+    @if (Model != null && Model.Count > 0)
+    {
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Date</th>
+                    <th>Cases</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>Sweden</td>
+                        <td>@item.Date.Value.ToShortDateString()</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cases)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
